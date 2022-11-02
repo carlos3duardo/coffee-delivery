@@ -21,4 +21,19 @@ export const GlobalStyle = createGlobalStyle`
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Baloo 2', cursive;
   }
+
+  button {
+    font-size: 0.75rem;
+    font-weight: 400;
+    padding: 0.5rem 0.75rem;
+    border: 0;
+    border-radius: 6px;
+
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+
+    background-color: ${(props) => props.theme.baseButton};
+    color: ${(props) => props.theme.baseText};
+  }
 `

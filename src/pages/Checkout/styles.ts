@@ -7,6 +7,10 @@ export const CheckoutContainer = styled.form`
   max-width: 70rem;
   margin: 2rem auto 4rem auto;
 `
+export type ColorIcon = 'purple' | 'yellowDark';
+interface CardTitleProps {
+  colorIcon?: ColorIcon;
+}
 
 export const CardTitle = styled.div<CardTitleProps>`
   display: flex;
@@ -120,10 +124,53 @@ export const CardPaymentMethod = styled.div`
   border-radius: 6px;
 `
 
-export type ColorIcon = 'purple' | 'yellowDark';
-interface CardTitleProps {
-  colorIcon?: ColorIcon;
-}
+export const CardPaymentMethodOptions = styled.div`
+  ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+
+    list-style: none;
+
+    li {
+      input {
+        width: 0;
+        height: 0;
+        position: absolute;
+        left: -9999px;
+
+        & + label {
+          background-color: ${(props) => props.theme.baseButton};
+          text-transform: uppercase;
+          font-size: 0.75rem;
+          padding: 1rem;
+          border-radius: 6px;
+
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          justify-content: center;
+
+          cursor: pointer;
+
+          border: 1px solid transparent;
+
+          transition: all 0.2s ease;
+
+          &:hover {
+            background-color: ${(props) => props.theme.baseHover};
+          }
+        }
+
+        &:checked + label {
+          background-color: ${(props) => props.theme.purpleLight};
+          border: 1px solid ${(props) => props.theme.purple};
+        }
+      }
+
+    }
+  }
+`
 
 export const ShoppingCart = styled.div`
   background-color: ${(props) => props.theme.baseCard};

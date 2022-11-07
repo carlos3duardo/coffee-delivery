@@ -1,5 +1,5 @@
-import { CurrencyDollar, MapPinLine } from "phosphor-react";
-import { CheckoutContainer, CardFormAddress, OrderInfo, CardPaymentMethod, ShoppingCart, Sidebar, CardTitle, FormGrid, GridItem, FormInput } from "./styles";
+import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money } from "phosphor-react";
+import { CheckoutContainer, CardFormAddress, OrderInfo, CardPaymentMethod, ShoppingCart, Sidebar, CardTitle, FormGrid, GridItem, FormInput, CardPaymentMethodOptions } from "./styles";
 
 export function Checkout() {
   return (
@@ -35,6 +35,23 @@ export function Checkout() {
               <span>O pagamento é feito na entrega. Escolha a forma que deseja pagar.</span>
             </div>
           </CardTitle>
+
+          <CardPaymentMethodOptions>
+            <ul>
+              <li>
+                <input type="radio" name="payment_method" id="credito" value="Cartão de Crédito" />
+                <label htmlFor="credito"><CreditCard size="1rem" />Cartão de Crédito</label>
+              </li>
+              <li>
+                <input type="radio" name="payment_method" id="debito" value="Cartão de Débito" />
+                <label htmlFor="debito"><Bank size="1rem" /> Cartão de Débito</label>
+              </li>
+              <li>
+                <input type="radio" name="payment_method" id="dinheiro" value="Dinheiro" />
+                <label htmlFor="dinheiro"><Money size="1rem" />Dinheiro</label>
+              </li>
+            </ul>
+          </CardPaymentMethodOptions>
         </CardPaymentMethod>
       </OrderInfo>
 

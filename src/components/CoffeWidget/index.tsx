@@ -17,7 +17,7 @@ export function CoffeeWidget({name, description, tags, cost, imagePath}: CoffeeW
 
       <TagList>
         {tags.map((tag: string) => (
-          <TagItem>{tag}</TagItem>
+          <TagItem key={tag}>{tag}</TagItem>
         ))}
       </TagList>
 

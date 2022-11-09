@@ -41,5 +41,30 @@ export const Button = styled.button<ButtonProps>`
     : props.scheme === 'purpleDark' ? props.theme.purpleLight
     : props.scheme === 'yellowLight' ? props.theme.yellowDark
     : props.scheme === 'yellowDark' ? props.theme.yellowLight
-    : props.theme.baseText}
+    : props.theme.baseText};
+
+  cursor: pointer;
+
+  position: relative;
+`
+
+export const ButtonBadge = styled.span`
+  color: white;
+  background-color: ${(props) => props.theme.yellowDark};
+  border-radius: 100px;
+
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 1.25rem;
+  min-width: 1.25rem;
+
+  position: absolute;
+  top: calc(-1rem/2);
+  right: calc(-1rem/2);
 `

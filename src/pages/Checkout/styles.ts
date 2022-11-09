@@ -171,9 +171,3 @@ export const CardPaymentMethodOptions = styled.div`
     }
   }
 `
-
-export const ShoppingCart = styled.div`
-  background-color: ${(props) => props.theme.baseCard};
-  border-radius: 6px 44px;
-  padding: 2.5rem;
-`

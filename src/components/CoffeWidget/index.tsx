@@ -1,7 +1,8 @@
-import { CoffeChangeAmount } from "../CoffeeChangeAmount";
+import { CoffeeChangeAmount } from "../CoffeeChangeAmount";
 import { CoffeeWidgetContainer, Cost, TagItem, TagList, WidgetFooter } from "./styles";
 
 interface CoffeeWidgetProps {
+  id: number;
   name: string;
   description: string;
   tags: string[];
@@ -9,7 +10,7 @@ interface CoffeeWidgetProps {
   imagePath: string;
 }
 
-export function CoffeeWidget({name, description, tags, cost, imagePath}: CoffeeWidgetProps) {
+export function CoffeeWidget({id, name, description, tags, cost, imagePath}: CoffeeWidgetProps) {
   return (
     <CoffeeWidgetContainer>
 
@@ -26,7 +27,7 @@ export function CoffeeWidget({name, description, tags, cost, imagePath}: CoffeeW
 
       <WidgetFooter>
         <Cost><span>R$</span>{new Intl.NumberFormat('pt-BR', {minimumFractionDigits: 2}).format(cost) }</Cost>
-        <CoffeChangeAmount />
+        <CoffeeChangeAmount coffeeId={id} />
       </WidgetFooter>
     </CoffeeWidgetContainer>
   )

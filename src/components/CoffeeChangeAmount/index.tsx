@@ -1,9 +1,15 @@
 import { Minus, Plus, ShoppingCart } from "phosphor-react";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { ShoppingCartContext } from "../../contexts/ShoppingCartContext";
 import { AddToCartButton, AmountInput, ChangeAmountButton, ChangeAmountContainer, Counter } from "./styles";
 
-export function CoffeChangeAmount() {
+interface CoffeeChangeAmountProps {
+  coffeeId: number;
+}
+
+export function CoffeeChangeAmount({ coffeeId }: CoffeeChangeAmountProps) {
   const [amount, setAmount] = useState(1);
+  const { updateOrder } = useContext(ShoppingCartContext);
 
   function decreaseAmount() {
     if (amount > 1) {
@@ -17,14 +23,21 @@ export function CoffeChangeAmount() {
     }
   }
 
+  function handleUpdateOrder() {
+    updateOrder({
+      coffeeId: coffeeId,
+      amount: amount
+    })
+  }
+
   return (
     <ChangeAmountContainer>
       <Counter>
-        <ChangeAmountButton className="decrease" onClick={decreaseAmount}><Minus weight="bold" size="1.125rem" /></ChangeAmountButton>
+        <ChangeAmountButton type="button" className="decrease" onClick={decreaseAmount}><Minus weight="bold" size="1.125rem" /></ChangeAmountButton>
         <AmountInput value={amount} readOnly />
-        <ChangeAmountButton className="increase" onClick={increaseAmount}><Plus weight="bold" size="1.125rem" /></ChangeAmountButton>
+        <ChangeAmountButton type="button" className="increase" onClick={increaseAmount}><Plus weight="bold" size="1.125rem" /></ChangeAmountButton>
       </Counter>
-      <AddToCartButton><ShoppingCart size="1.125rem" weight="fill" /></AddToCartButton>
+      <AddToCartButton onClick={handleUpdateOrder}><ShoppingCart size="1.125rem" weight="fill" /></AddToCartButton>
     </ChangeAmountContainer>
   )
 }

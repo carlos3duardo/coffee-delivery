@@ -19,7 +19,7 @@ export function Cardapio() {
 
         <CardapioLista>
           {coffeeList.map(({id, name, description, tags, cost, imagePath}: CoffeeProps) => (
-            <li key={id}><CoffeeWidget name={name} description={description} tags={tags} cost={cost} imagePath={imagePath} /></li>
+            <li key={id}><CoffeeWidget id={id} name={name} description={description} tags={tags} cost={cost} imagePath={imagePath} /></li>
           ))}
         </CardapioLista>
       </CardapioContent>

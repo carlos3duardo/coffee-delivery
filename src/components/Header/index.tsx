@@ -7,8 +7,6 @@ import { Button, ButtonBadge, HeaderContainer, HeaderNavigation } from "./styles
 export function Header() {
   const { order } = useContext(ShoppingCartContext);
 
-  console.log(order.length)
-
   return (
     <HeaderContainer>
       <NavLink to="/" title="Home"><figure><img src="images/coffee-delivery-header-logo.png" /></figure></NavLink>

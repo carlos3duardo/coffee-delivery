@@ -27,7 +27,7 @@ export function CoffeeWidget({id, name, description, tags, cost, imagePath}: Cof
 
       <WidgetFooter>
         <Cost><span>R$</span>{new Intl.NumberFormat('pt-BR', {minimumFractionDigits: 2}).format(cost) }</Cost>
-        <CoffeeChangeAmount coffeeId={id} />
+        <CoffeeChangeAmount coffeeId={id} showAddToCartButton={true} />
       </WidgetFooter>
     </CoffeeWidgetContainer>
   )

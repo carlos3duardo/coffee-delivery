@@ -7,8 +7,6 @@ import { ShoppingCartContainer, DrinkSelected, DrinkInfo, DrinkDetails, DrinkIma
 export function ShoppingCart() {
   const { order } = useContext(ShoppingCartContext);
 
-  console.log(order)
-
   return (
     <ShoppingCartContainer>
       {order.length > 0 && (
@@ -18,7 +16,7 @@ export function ShoppingCart() {
               <DrinkImage><img src={drink.imagePath} alt="Drink image from above" /></DrinkImage>
               <DrinkDetails>
                 <span>{drink.name}</span>
-                <CoffeeChangeAmount coffeeId={drink.coffeeId} />
+                <CoffeeChangeAmount coffeeId={drink.coffeeId} size="sm" showAddToCartButton={false} showRemoveButton={true} />
               </DrinkDetails>
             </DrinkInfo>
             <DrinkCost><span>R$</span> {drink.cost && new Intl.NumberFormat('pt-BR', {minimumFractionDigits: 2}).format(drink.cost * drink.amount) }</DrinkCost>

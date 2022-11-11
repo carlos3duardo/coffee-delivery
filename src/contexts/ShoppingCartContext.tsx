@@ -51,8 +51,6 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderInterface
     }
   }
 
-  console.log({order})
-
   return (
     <ShoppingCartContext.Provider value={{ order, updateOrder }}>
       {children}

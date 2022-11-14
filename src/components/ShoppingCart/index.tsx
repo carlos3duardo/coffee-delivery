@@ -11,17 +11,21 @@ export function ShoppingCart() {
     <ShoppingCartContainer>
       {order.length > 0 && (
         order.map((drink) => (
-          <DrinkSelected key={drink.coffeeId}>
+          <DrinkSelected key={drink.drinkId}>
             <DrinkInfo>
               <DrinkImage><img src={drink.imagePath} alt="Drink image from above" /></DrinkImage>
               <DrinkDetails>
                 <span>{drink.name}</span>
-                <CoffeeChangeAmount coffeeId={drink.coffeeId} size="sm" showAddToCartButton={false} showRemoveButton={true} />
+                <CoffeeChangeAmount drinkId={drink.drinkId} amountInOrder={drink.amount} size="sm" showAddToCartButton={false} showRemoveButton={true} />
               </DrinkDetails>
             </DrinkInfo>
             <DrinkCost><span>R$</span> {drink.cost && new Intl.NumberFormat('pt-BR', {minimumFractionDigits: 2}).format(drink.cost * drink.amount) }</DrinkCost>
           </DrinkSelected>
         ))
+      )}
+
+      {!order.length && (
+        <p>O seu carrinho de compras está vazio.</p>
       )}
     </ShoppingCartContainer>
   )

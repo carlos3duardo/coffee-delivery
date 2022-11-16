@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const ChangeAmountContainer = styled.div`
   display: flex;
@@ -38,7 +38,6 @@ export const ChangeAmountButton = styled.button`
   &.increase {
     padding-right: 0.5rem;
   }
-
 `
 
 export const AmountInput = styled.input`
@@ -58,7 +57,7 @@ export const AddToCartButton = styled.button`
   background-color: ${(props) => props.theme.purpleDark};
   color: white;
   border-radius: 6px;
-  padding: 0.5rem ;
+  padding: 0.5rem;
   min-height: 2.375rem;
   min-width: 2.375rem;
 
@@ -74,7 +73,7 @@ export const RemoveFromCartButton = styled.button`
   color: ${(props) => props.theme.baseText};
 
   border-radius: 6px;
-  padding: 0.5rem ;
+  padding: 0.5rem;
   min-height: 2.375rem;
   min-width: 2.375rem;
 

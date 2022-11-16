@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const IntroContainer = styled.div`
   background-image: url(images/intro-background.png);
@@ -46,7 +46,14 @@ export const Vantagem = styled.li`
 `
 
 interface IconeProps {
-  color?: 'yellow' | 'yellowLight' | 'yellowDark' | 'purple' | 'purpleLight' | 'purpleDark' | 'baseText';
+  color?:
+    | 'yellow'
+    | 'yellowLight'
+    | 'yellowDark'
+    | 'purple'
+    | 'purpleLight'
+    | 'purpleDark'
+    | 'baseText'
 }
 
 export const Icone = styled.figure<IconeProps>`
@@ -58,7 +65,8 @@ export const Icone = styled.figure<IconeProps>`
   padding: 8px;
   border-radius: 32px;
   color: #ffffff;
-  background-color: ${props => props.color ? props.theme[props.color] : props.theme.baseText }
+  background-color: ${(props) =>
+    props.color ? props.theme[props.color] : props.theme.baseText};
 `
 
 export const ImageContainer = styled.figure`

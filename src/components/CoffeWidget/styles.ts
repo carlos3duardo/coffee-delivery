@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const CoffeeWidgetContainer = styled.div`
   background-color: ${(props) => props.theme.baseCard};
@@ -21,7 +21,6 @@ export const CoffeeWidgetContainer = styled.div`
 
     width: 120px;
     height: 120px;
-
 
     img {
       display: block;
@@ -49,7 +48,7 @@ export const TagList = styled.ul`
   list-style: none;
   display: flex;
   gap: 0.25rem;
-  margin: .75rem auto 1rem auto;
+  margin: 0.75rem auto 1rem auto;
 `
 
 export const TagItem = styled.li`
@@ -84,10 +83,9 @@ export const Cost = styled.div`
   span {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
-    font-size: .875rem;
+    font-size: 0.875rem;
     line-height: 1.1375rem;
   }
 `
 
-export const Buy = styled.div`
-`
+export const Buy = styled.div``

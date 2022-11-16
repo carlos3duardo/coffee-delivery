@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const CheckoutContainer = styled.form`
   display: flex;
@@ -7,9 +7,9 @@ export const CheckoutContainer = styled.form`
   max-width: 70rem;
   margin: 2rem auto 4rem auto;
 `
-export type ColorIcon = 'purple' | 'yellowDark';
+export type ColorIcon = 'purple' | 'yellowDark'
 interface CardTitleProps {
-  colorIcon?: ColorIcon;
+  colorIcon?: ColorIcon
 }
 
 export const CardTitle = styled.div<CardTitleProps>`
@@ -21,9 +21,12 @@ export const CardTitle = styled.div<CardTitleProps>`
   color: ${(props) => props.theme.baseSubtitle};
 
   figure {
-    color: ${(props) => props.colorIcon === 'purple' ? props.theme.purple
-      : props.colorIcon === 'yellowDark' ? props.theme.yellowDark
-      : props.theme.baseSubtitle};
+    color: ${(props) =>
+      props.colorIcon === 'purple'
+        ? props.theme.purple
+        : props.colorIcon === 'yellowDark'
+        ? props.theme.yellowDark
+        : props.theme.baseSubtitle};
   }
 
   span {
@@ -66,11 +69,11 @@ export const FormGrid = styled.div`
 `
 
 interface GridItemProps {
-  columnStart?: number;
-  columnEnd?: number;
-  rowStart?: number;
-  rowEnd?: number;
-  requiredField?: boolean;
+  columnStart?: number
+  columnEnd?: number
+  rowStart?: number
+  rowEnd?: number
+  requiredField?: boolean
 }
 
 export const GridItem = styled.div<GridItemProps>`
@@ -81,7 +84,7 @@ export const GridItem = styled.div<GridItemProps>`
 
   &::before {
     color: ${(props) => props.theme.baseLabel};
-    display: ${(props) => !props.requiredField ? 'block' : 'none'};
+    display: ${(props) => (!props.requiredField ? 'block' : 'none')};
     position: absolute;
     content: 'Opcional';
     font-size: 0.75rem;
@@ -89,12 +92,12 @@ export const GridItem = styled.div<GridItemProps>`
     font-style: italic;
     right: 0.75rem;
 
-    top: calc(50% - (0.75rem/2));
+    top: calc(50% - (0.75rem / 2));
   }
 `
 
 interface FormInputProps {
-  required?: boolean;
+  required?: boolean
 }
 
 export const FormInput = styled.input<FormInputProps>`
@@ -113,7 +116,7 @@ export const FormInput = styled.input<FormInputProps>`
   }
 
   &::placeholder {
-    color: ${(props) => props.theme.baseLabel}
+    color: ${(props) => props.theme.baseLabel};
   }
 `
 
@@ -167,7 +170,6 @@ export const CardPaymentMethodOptions = styled.div`
           border: 1px solid ${(props) => props.theme.purple};
         }
       }
-
     }
   }
 `

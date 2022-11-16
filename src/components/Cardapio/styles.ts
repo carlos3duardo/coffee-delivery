@@ -1,7 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
-export const CardapioContainer = styled.div`
-`
+export const CardapioContainer = styled.div``
 export const CardapioContent = styled.div`
   width: 100%;
   max-width: 70rem;
@@ -15,10 +14,10 @@ export const CardapioContent = styled.div`
 `
 
 export const CardapioLista = styled.ul`
-    margin-top: 3.375rem;
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    row-gap: 2.5rem;
-    column-gap: 2rem;
+  margin-top: 3.375rem;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  row-gap: 2.5rem;
+  column-gap: 2rem;
 `

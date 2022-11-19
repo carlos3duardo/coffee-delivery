@@ -5,7 +5,10 @@ import {
   MapPinLine,
   Money,
 } from 'phosphor-react'
+import { useContext } from 'react'
+import { NavLink } from 'react-router-dom'
 import { ShoppingCart } from '../../components/ShoppingCart'
+import { ShoppingCartContext } from '../../contexts/ShoppingCartContext'
 import {
   CheckoutContainer,
   CardFormAddress,
@@ -17,9 +20,28 @@ import {
   GridItem,
   FormInput,
   CardPaymentMethodOptions,
+  EmptyOrderContainer,
 } from './styles'
 
 export function Checkout() {
+  const { order } = useContext(ShoppingCartContext)
+
+  console.log(order)
+
+  if (!order.length) {
+    return (
+      <EmptyOrderContainer>
+        Seu carrinho de compras está vazio.
+        <br />
+        Selecione a sua bebida na{' '}
+        <NavLink to="/" title="Home">
+          página principal
+        </NavLink>{' '}
+        para poder realizar um pedido.
+      </EmptyOrderContainer>
+    )
+  }
+
   return (
     <CheckoutContainer>
       <OrderInfo>

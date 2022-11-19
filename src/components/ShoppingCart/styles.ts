@@ -51,3 +51,56 @@ export const DrinkDetails = styled.div`
 export const DrinkCost = styled.div`
   font-weight: 700;
 `
+
+export const OrderCosts = styled.div`
+  width: 100%;
+  margin: 1.5rem 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  color: ${(props) => props.theme.baseText};
+`
+
+interface OrderItemProps {
+  total?: boolean
+}
+
+export const ItemDescription = styled.div`
+  text-align: left;
+`
+
+export const ItemCost = styled.div`
+  text-align: right;
+`
+
+export const OrderItem = styled.div<OrderItemProps>`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  font-weight: ${(props) => (props.total ? 700 : 400)};
+
+  ${ItemDescription} {
+    font-size: ${(props) => (props.total ? '1.25rem' : '0.875rem')};
+  }
+
+  ${ItemCost} {
+    font-size: ${(props) => (props.total ? '1.25rem' : '1rem')};
+  }
+`
+
+export const ConfirmCheckoutButton = styled.button`
+  display: block;
+  width: 100%;
+
+  background-color: ${(props) => props.theme.yellow};
+  color: ${(props) => props.theme.white};
+  font-size: 0.875rem;
+  font-weight: 700;
+
+  padding: 0.75rem;
+
+  text-transform: uppercase;
+`

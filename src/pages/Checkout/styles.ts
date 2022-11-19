@@ -1,5 +1,15 @@
 import styled from 'styled-components'
 
+export const EmptyOrderContainer = styled.div`
+  background-color: ${(props) => props.theme.baseCard};
+  padding: 2rem;
+  border-radius: 6px 44px 6px 44px;
+
+  width: 100%;
+  max-width: 70rem;
+  margin: 2rem auto 4rem auto;
+`
+
 export const CheckoutContainer = styled.form`
   display: flex;
   gap: 2rem;

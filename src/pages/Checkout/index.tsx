@@ -6,6 +6,7 @@ import {
   Money,
 } from 'phosphor-react'
 import { useContext } from 'react'
+import { useForm } from 'react-hook-form'
 import { NavLink } from 'react-router-dom'
 import { ShoppingCart } from '../../components/ShoppingCart'
 import { ShoppingCartContext } from '../../contexts/ShoppingCartContext'
@@ -25,8 +26,11 @@ import {
 
 export function Checkout() {
   const { order } = useContext(ShoppingCartContext)
+  const { register, handleSubmit } = useForm()
 
-  console.log(order)
+  function handleCheckoutOrder(data: any) {
+    console.log(data)
+  }
 
   if (!order.length) {
     return (
@@ -43,7 +47,7 @@ export function Checkout() {
   }
 
   return (
-    <CheckoutContainer>
+    <CheckoutContainer onSubmit={handleSubmit(handleCheckoutOrder)}>
       <OrderInfo>
         <h2>Complete seu pedido</h2>
 
@@ -62,63 +66,63 @@ export function Checkout() {
             <GridItem columnStart={1} columnEnd={5} requiredField>
               <FormInput
                 type="text"
-                name="cep"
                 id="cep"
                 placeholder="CEP"
                 required
+                {...register('cep')}
               />
             </GridItem>
             <GridItem columnStart={1} columnEnd={13} requiredField>
               <FormInput
                 type="text"
-                name="rua"
                 id="rua"
                 placeholder="Rua"
                 required
+                {...register('rua')}
               />
             </GridItem>
             <GridItem columnStart={1} columnEnd={5} requiredField>
               <FormInput
                 type="text"
-                name="numero"
                 id="numero"
                 placeholder="Número"
                 required
+                {...register('numero')}
               />
             </GridItem>
             <GridItem columnStart={5} columnEnd={13}>
               <FormInput
                 type="text"
-                name="complemento"
                 id="complemento"
                 placeholder="Complemento"
+                {...register('complemento')}
               />
             </GridItem>
             <GridItem columnStart={1} columnEnd={5} requiredField>
               <FormInput
                 type="text"
-                name="bairro"
                 id="bairro"
                 placeholder="Bairro"
                 required
+                {...register('bairro')}
               />
             </GridItem>
             <GridItem columnStart={5} columnEnd={10} requiredField>
               <FormInput
                 type="text"
-                name="cidade"
                 id="cidade"
                 placeholder="Cidade"
                 required
+                {...register('cidade')}
               />
             </GridItem>
             <GridItem columnStart={10} columnEnd={13} requiredField>
               <FormInput
                 type="text"
-                name="uf"
                 id="uf"
                 placeholder="UF"
                 required
+                {...register('uf')}
               />
             </GridItem>
           </FormGrid>
@@ -143,9 +147,10 @@ export function Checkout() {
               <li>
                 <input
                   type="radio"
-                  name="payment_method"
                   id="credito"
                   value="Cartão de Crédito"
+                  required
+                  {...register('pagamento')}
                 />
                 <label htmlFor="credito">
                   <CreditCard size="1rem" />
@@ -155,9 +160,10 @@ export function Checkout() {
               <li>
                 <input
                   type="radio"
-                  name="payment_method"
                   id="debito"
                   value="Cartão de Débito"
+                  required
+                  {...register('pagamento')}
                 />
                 <label htmlFor="debito">
                   <Bank size="1rem" /> Cartão de Débito
@@ -166,9 +172,10 @@ export function Checkout() {
               <li>
                 <input
                   type="radio"
-                  name="payment_method"
                   id="dinheiro"
                   value="Dinheiro"
+                  required
+                  {...register('pagamento')}
                 />
                 <label htmlFor="dinheiro">
                   <Money size="1rem" />

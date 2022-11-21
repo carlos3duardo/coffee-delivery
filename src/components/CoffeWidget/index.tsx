@@ -1,3 +1,5 @@
+import { useContext } from 'react'
+import { ShoppingCartContext } from '../../contexts/ShoppingCartContext'
 import { CoffeeChangeAmount } from '../CoffeeChangeAmount'
 import {
   CoffeeWidgetContainer,
@@ -24,6 +26,10 @@ export function CoffeeWidget({
   cost,
   imagePath,
 }: CoffeeWidgetProps) {
+  const { order } = useContext(ShoppingCartContext)
+
+  const drinkInShoppingCart = order.find((drink) => drink.drinkId === id)
+
   return (
     <CoffeeWidgetContainer>
       <figure>
@@ -46,7 +52,11 @@ export function CoffeeWidget({
             cost,
           )}
         </Cost>
-        <CoffeeChangeAmount drinkId={id} showAddToCartButton={true} />
+        <CoffeeChangeAmount
+          drinkId={id}
+          amountInOrder={drinkInShoppingCart ? drinkInShoppingCart.amount : 1}
+          showAddToCartButton={true}
+        />
       </WidgetFooter>
     </CoffeeWidgetContainer>
   )

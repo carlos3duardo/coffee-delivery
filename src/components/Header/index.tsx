@@ -12,6 +12,10 @@ import {
 export function Header() {
   const { order } = useContext(ShoppingCartContext)
 
+  const drinksAmount = order.reduce((acc, drink) => {
+    return acc + drink.amount
+  }, 0)
+
   return (
     <HeaderContainer>
       <NavLink to="/" title="Home">
@@ -26,7 +30,7 @@ export function Header() {
         <NavLink to="/checkout" title="Carrinho de compras">
           <Button scheme="yellowLight">
             <ShoppingCart size="1.125rem" weight="fill" />
-            {order.length > 0 && <ButtonBadge>{order.length}</ButtonBadge>}
+            {drinksAmount > 0 && <ButtonBadge>{drinksAmount}</ButtonBadge>}
           </Button>
         </NavLink>
       </HeaderNavigation>

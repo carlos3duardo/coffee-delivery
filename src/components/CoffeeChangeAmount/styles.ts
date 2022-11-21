@@ -66,6 +66,14 @@ export const AddToCartButton = styled.button`
   justify-content: center;
 
   cursor: pointer;
+
+  &:hover {
+    background-color: ${(props) => props.theme.purple};
+  }
+
+  &:active {
+    background-color: ${(props) => props.theme.purpleLight};
+  }
 `
 
 export const RemoveFromCartButton = styled.button`

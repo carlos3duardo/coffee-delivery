@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from 'react'
+import { createContext, ReactNode, useEffect, useState } from 'react'
 
 import { coffeeList } from '../data/coffees'
 
@@ -15,10 +15,34 @@ type AddDrinkToOrderProps = {
   amount: number
 }
 
+type DeliveryAddressProps = {
+  cep: string
+  rua: string
+  numero: string
+  complemento?: string
+  bairro: string
+  cidade: string
+  uf: string
+}
+
+type SubmitOrderForm = {
+  cep: string
+  rua: string
+  numero: string
+  complemento?: string
+  bairro: string
+  cidade: string
+  uf: string
+  pagamento: string
+}
+
 interface ShoppingCartContextInterface {
   order: OrderItemProps[]
+  deliveryAddress: DeliveryAddressProps
+  payment: string
   addDrinkToOrder: (drink: AddDrinkToOrderProps) => void
   removeDrinkFromOrder: (drinkId: number) => void
+  submitNewOrder: (data: SubmitOrderForm) => void
 }
 
 export const ShoppingCartContext = createContext(
@@ -32,7 +56,33 @@ interface ShoppingCartProviderInterface {
 export function ShoppingCartProvider({
   children,
 }: ShoppingCartProviderInterface) {
-  const [order, setOrder] = useState<OrderItemProps[]>([])
+  const [order, setOrder] = useState<OrderItemProps[]>(() => {
+    const orderJson = localStorage.getItem('@coffeeDelivery:orderList')
+
+    if (orderJson) {
+      return JSON.parse(orderJson)
+    }
+
+    return []
+  })
+
+  const [deliveryAddress, setDeliveryAddress] = useState<DeliveryAddressProps>(
+    () => {
+      const address = localStorage.getItem('@coffeeDelivery:deliveryAddress')
+
+      if (address) {
+        return JSON.parse(address)
+      }
+
+      return {}
+    },
+  )
+
+  const [payment, setPayment] = useState(() => {
+    const selectedPayment = localStorage.getItem('@coffeeDelivery:payment')
+
+    return selectedPayment || ''
+  })
 
   function addDrinkToOrder({ drinkId, amount }: AddDrinkToOrderProps) {
     const selectedDrink = coffeeList.find((drink) => drink.id === drinkId)
@@ -76,9 +126,45 @@ export function ShoppingCartProvider({
     setOrder(updatedOrder)
   }
 
+  function submitNewOrder(data: SubmitOrderForm) {
+    const address = {
+      cep: data.cep,
+      rua: data.rua,
+      numero: data.numero,
+      complemento: data.complemento,
+      bairro: data.bairro,
+      cidade: data.cidade,
+      uf: data.uf,
+    }
+
+    setDeliveryAddress(address)
+
+    setPayment(data.pagamento)
+
+    localStorage.setItem(
+      '@coffeeDelivery:deliveryAddress',
+      JSON.stringify(address),
+    )
+
+    localStorage.setItem('@coffeeDelivery:payment', data.pagamento)
+  }
+
+  useEffect(() => {
+    const stateJSON = JSON.stringify(order)
+
+    localStorage.setItem('@coffeeDelivery:orderList', stateJSON)
+  }, [order])
+
   return (
     <ShoppingCartContext.Provider
-      value={{ order, addDrinkToOrder, removeDrinkFromOrder }}
+      value={{
+        order,
+        deliveryAddress,
+        payment,
+        addDrinkToOrder,
+        removeDrinkFromOrder,
+        submitNewOrder,
+      }}
     >
       {children}
     </ShoppingCartContext.Provider>

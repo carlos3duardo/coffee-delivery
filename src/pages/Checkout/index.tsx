@@ -25,11 +25,23 @@ import {
 } from './styles'
 
 export function Checkout() {
-  const { order } = useContext(ShoppingCartContext)
-  const { register, handleSubmit } = useForm()
+  const { order, deliveryAddress, payment, submitNewOrder } =
+    useContext(ShoppingCartContext)
+  const { register, handleSubmit } = useForm({
+    defaultValues: {
+      cep: deliveryAddress.cep || '',
+      rua: deliveryAddress.rua || '',
+      numero: deliveryAddress.numero || '',
+      complemento: deliveryAddress.complemento || '',
+      bairro: deliveryAddress.bairro || '',
+      cidade: deliveryAddress.cidade || '',
+      uf: deliveryAddress.uf || '',
+      pagamento: payment || '',
+    },
+  })
 
   function handleCheckoutOrder(data: any) {
-    console.log(data)
+    submitNewOrder(data)
   }
 
   if (!order.length) {

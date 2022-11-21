@@ -103,4 +103,10 @@ export const ConfirmCheckoutButton = styled.button`
   padding: 0.75rem;
 
   text-transform: uppercase;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${(props) => props.theme.yellowDark};
+  }
 `

@@ -9,11 +9,11 @@ import { ShoppingCartProvider } from './contexts/ShoppingCartContext'
 function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
-      <ShoppingCartProvider>
-        <BrowserRouter>
+      <BrowserRouter>
+        <ShoppingCartProvider>
           <Router />
-        </BrowserRouter>
-      </ShoppingCartProvider>
+        </ShoppingCartProvider>
+      </BrowserRouter>
       <GlobalStyle />
     </ThemeProvider>
   )

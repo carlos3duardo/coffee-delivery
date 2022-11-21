@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useEffect, useState } from 'react'
+import { redirect, useNavigate } from 'react-router-dom'
 
 import { coffeeList } from '../data/coffees'
 
@@ -84,6 +85,8 @@ export function ShoppingCartProvider({
     return selectedPayment || ''
   })
 
+  const navigate = useNavigate()
+
   function addDrinkToOrder({ drinkId, amount }: AddDrinkToOrderProps) {
     const selectedDrink = coffeeList.find((drink) => drink.id === drinkId)
     const isDrinkAlreadySelected = order.find(
@@ -147,6 +150,8 @@ export function ShoppingCartProvider({
     )
 
     localStorage.setItem('@coffeeDelivery:payment', data.pagamento)
+
+    navigate('/success')
   }
 
   useEffect(() => {
